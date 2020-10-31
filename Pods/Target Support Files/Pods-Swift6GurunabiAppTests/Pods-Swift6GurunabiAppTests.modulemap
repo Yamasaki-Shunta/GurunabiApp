@@ -1,0 +1,6 @@
+framework module Pods_Swift6GurunabiAppTests {
+  umbrella header "Pods-Swift6GurunabiAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
