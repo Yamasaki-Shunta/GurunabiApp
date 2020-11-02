@@ -6,24 +6,47 @@
 //
 
 import UIKit
+import WebKit
+import SDWebImage
+
 
 class DetailViewController: UIViewController {
 
+    //受け取り用の変数
+    var url = String()
+    var name = String()
+    var imageURLString = String()
+    var tel = String()
+    
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    @IBOutlet weak var webView: WKWebView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        imageView.sd_setImage(with: URL(string: imageURLString), completed: nil)
+       
+        let request = URLRequest(url: URL(string: url)!)
+        webView.load(request)
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func call(_ sender: Any) {
+  
+        UIApplication.shared.open(URL(string: "tel://\(tel)")!, options: [:], completionHandler: nil)
+        
+    
     }
-    */
+    
+    
 
 }
+
